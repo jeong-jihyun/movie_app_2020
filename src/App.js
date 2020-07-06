@@ -20,29 +20,52 @@ class App extends React.Component {
   //return <div className="App"/>;
   //return <div> Hello !!!!</div>;
   /**  something={true} papapapa={['hello', 1,2, 3,4,true]}*/
-  constructor(props){
-    super(props);
-    console.log('hello');
-  }
-  state = {
-    count: 0
+  // constructor(props){
+  //   super(props);
+  //   console.log('hello');
+  // }
+  // state = {
+  //   count: 0
+  // };
+  state ={
+    isLoading : true,
+    movies:[]
   };
+  // add = () =>{
+  //   this.setState(current => ({count: current.count + 1}));
+  // };
+  // minus = () => {
+  //   this.setState(current => ({count: current.count - 1}));
+  // };
   
-  add = () =>{
-    this.setState(current => ({count: current.count + 1}));
-  };
-  minus = () => {
-    this.setState(current => ({count: current.count - 1}));
-  };
+  // componentDidMount(){
+  //   console.log('component rendered');
+  // }
+  
+  // componentDidUpdate(){
+  //   console.log('I Just updated');
+  // }
+
+  // componentWillUnmount(){
+  //   console.log('Goodbye, cruel world');
+  // }
+
+// <div>
+//   <h1>Hello {this.state.count}</h1>
+//   <button onClick={this.add}>Add</button>
+//   <button onClick={this.minus}>Minus</button>
+// </div>
+componentDidMount(){
+  setTimeout(()=> {
+    this.setState({ isLoading: false});
+  }, 6000);
+}
   render() {
     console.log('render');
-    
+    const { isLoading } = this.state;
+
     return (
-      <div>
-        <h1>Hello {this.state.count}</h1>
-        <button onClick={this.add}>Add</button>
-        <button onClick={this.minus}>Minus</button>
-      </div>
+      <div>{ isLoading ? 'Loading...' : 'We are ready'}</div>
     );
   }
 }
