@@ -20,84 +20,84 @@ import './Home.css';
 //   return <BlackHole Key={dish.id} name={dish.name} picture={dish.image} rating={dish.rating} />;
 // }
 class Home extends React.Component {
-    //return <div className="App"/>;
-    //return <div> Hello !!!!</div>;
-    /**  something={true} papapapa={['hello', 1,2, 3,4,true]}*/
-    // constructor(props){
-    //   super(props);
-    //   console.log('hello');
-    // }
-    // state = {
-    //   count: 0
-    // };
-    state = {
-      isLoading: true,
-      movies: []
-    };
-    // getMovies 대기 시간이 필요로 함
-    getMovies = async () => {
-      //const movies = await axios.get('https://yts.mx/api/v2/list_movies.json');
-      const { data: { data: { movies } } } = await axios.get('https://yts.mx/api/v2/list_movies.json?sort_by=rating');
-      //console.log(movies);
-      this.setState({ movies, isLoading: false });
-    }
-    // add = () =>{
-    //   this.setState(current => ({count: current.count + 1}));
-    // };
-    // minus = () => {
-    //   this.setState(current => ({count: current.count - 1}));
-    // };
-  
-    // componentDidMount(){
-    //   console.log('component rendered');
-    // }
-  
-    // componentDidUpdate(){
-    //   console.log('I Just updated');
-    // }
-  
-    // componentWillUnmount(){
-    //   console.log('Goodbye, cruel world');
-    // }
-  
-    // <div>
-    //   <h1>Hello {this.state.count}</h1>
-    //   <button onClick={this.add}>Add</button>
-    //   <button onClick={this.minus}>Minus</button>
-    // </div>
-    componentDidMount() {
-      // setTimeout(()=> {
-      //   this.setState({ isLoading: false});
-      // }, 6000);
-  
-      // https://yts.mx/api/v2/list_movies.json remove
-      ///axios.get('https://yts.mx/api/v2/list_movies.json');
-  
-      this.getMovies();
-    }
-    render() {
-      // console.log('render');
-      const { isLoading, movies } = this.state;
-  
-      return (
-        <section className="container">
-          {isLoading ? (<div className="loader">
-            <span className="loader__text">Loading...</span>
-          </div>) : (<div className="movies">{
-            movies.map((movies) => {
-              return <Movie 
-                        key={movies.id} 
-                        id={movies.id} 
-                        year={movies.year} 
-                        title={movies.title} 
-                        summary={movies.summary} 
-                        poster={movies.medium_cover_image} 
-                        genres={movies.genres}/>;
-            })
-          }</div>)
-          }
-        </section>
-      );
-    }
+  //return <div className="App"/>;
+  //return <div> Hello !!!!</div>;
+  /**  something={true} papapapa={['hello', 1,2, 3,4,true]}*/
+  // constructor(props){
+  //   super(props);
+  //   console.log('hello');
+  // }
+  // state = {
+  //   count: 0
+  // };
+  state = {
+    isLoading: true,
+    movies: []
+  };
+  // getMovies 대기 시간이 필요로 함
+  getMovies = async () => {
+    //const movies = await axios.get('https://yts.mx/api/v2/list_movies.json');
+    const { data: { data: { movies } } } = await axios.get('https://yts.mx/api/v2/list_movies.json?sort_by=rating');
+    //console.log(movies);
+    this.setState({ movies, isLoading: false });
   }
+  // add = () =>{
+  //   this.setState(current => ({count: current.count + 1}));
+  // };
+  // minus = () => {
+  //   this.setState(current => ({count: current.count - 1}));
+  // };
+
+  // componentDidMount(){
+  //   console.log('component rendered');
+  // }
+
+  // componentDidUpdate(){
+  //   console.log('I Just updated');
+  // }
+
+  // componentWillUnmount(){
+  //   console.log('Goodbye, cruel world');
+  // }
+
+  // <div>
+  //   <h1>Hello {this.state.count}</h1>
+  //   <button onClick={this.add}>Add</button>
+  //   <button onClick={this.minus}>Minus</button>
+  // </div>
+  componentDidMount() {
+    // setTimeout(()=> {
+    //   this.setState({ isLoading: false});
+    // }, 6000);
+
+    // https://yts.mx/api/v2/list_movies.json remove
+    ///axios.get('https://yts.mx/api/v2/list_movies.json');
+
+    this.getMovies();
+  }
+  render() {
+    // console.log('render');
+    const { isLoading, movies } = this.state;
+
+    return (
+      <section className="container">
+        {isLoading ? (<div className="loader">
+          <span className="loader__text">Loading...</span>
+        </div>) : (<div className="movies">{
+          movies.map((movies) => {
+            return <Movie
+              key={movies.id}
+              id={movies.id}
+              year={movies.year}
+              title={movies.title}
+              summary={movies.summary}
+              poster={movies.medium_cover_image}
+              genres={movies.genres} />;
+          })
+        }</div>)
+        }
+      </section>
+    );
+  }
+}
 export default Home;

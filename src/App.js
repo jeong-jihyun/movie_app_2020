@@ -7,6 +7,7 @@ import { HashRouter, Route } from 'react-router-dom';
 import './App.css';
 import Navigation from './components/Navigation';
 import Detail from './routes/Detail';
+import Todo from './routes/Todo';
 
 class App extends React.Component {
 
@@ -17,6 +18,7 @@ class App extends React.Component {
         <Route path="/" exact={true} component={Home} />
         <Route path="/about" component={About} />
         <Route path="/movie-detail" component={Detail}/>
+        <Route path="/todo" component={Todo}/>
       </HashRouter>
     );
   }
