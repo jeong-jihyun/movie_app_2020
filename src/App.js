@@ -1,65 +1,14 @@
 import React from 'react';
-//import axios from 'axios'; // get axios
-//import Movie from './components/Movie';
-import Home from './routes/Home';
-import About from './routes/About';
 import { HashRouter, Route } from 'react-router-dom';
 import './App.css';
 import Navigation from './components/Navigation';
+import About from './routes/About';
 import Detail from './routes/Detail';
+import Home from './routes/Home';
 import Todo from './routes/Todo';
-import { createStore } from 'redux';
-const initialState = {
-  tasks: []
-};
+import { createBrowserHistory } from 'history';
 
-function addReducer(state = initialState, action) {
-  switch (action.type) {
-    case 'ADD_TASK':
-      return {
-        ...state,
-        tasks: state.tasks.concat([action.payload.task])
-      };
-    default:
-      return state;
-  }
-}
-
-function resetReducer(state = initialState, action) {
-  switch (action.type) {
-    case 'RESET_TASK':
-      return {
-        ...state,
-        tasks: state.tasks.concat([])
-      };
-    default:
-      return state;
-  }
-}
-
-const addTask = (task) => ({
-  type: 'ADD_TASK',
-  payload: {
-    task
-  }
-});
-
-const store = createStore(addReducer);
-store.dispatch(addTask('스토어 Study'));
-console.log(store.getState());
-
-store.replaceReducer(resetReducer);
-console.log(store.getState());
-
-const resetTask = () => ({
-  type : 'RESET_TASK'
-});
-
-store.dispatch(resetTask());
-
-store.dispatch(addTask('리듀서 Study'));
-console.log(store.getState());
-
+const history = createBrowserHistory();
 
 class App extends React.Component {
   render() {
