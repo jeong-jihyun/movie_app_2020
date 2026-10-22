@@ -6,9 +6,6 @@ import About from './routes/About';
 import Detail from './routes/Detail';
 import Home from './routes/Home';
 import Todo from './routes/Todo';
-import { createBrowserHistory } from 'history';
-
-const history = createBrowserHistory();
 
 class App extends React.Component {
   render() {

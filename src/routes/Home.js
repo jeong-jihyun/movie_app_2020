@@ -37,9 +37,13 @@ class Home extends React.Component {
   // getMovies 대기 시간이 필요로 함
   getMovies = async () => {
     //const movies = await axios.get('https://yts.mx/api/v2/list_movies.json');
-    const { data: { data: { movies } } } = await axios.get('https://yts.mx/api/v2/list_movies.json?sort_by=rating');
-    //console.log(movies);
-    this.setState({ movies, isLoading: false });
+    try {
+      const { data: { data: { movies } } } = await axios.get('https://yts.mx/api/v2/list_movies.json?sort_by=rating');
+      this.setState({ movies: movies || [], isLoading: false });
+    } catch (e) {
+      // API 호출 실패 시 Loading 화면에 멈추지 않도록 빈 목록으로 전환
+      this.setState({ movies: [], isLoading: false });
+    }
   }
   // add = () =>{
   //   this.setState(current => ({count: current.count + 1}));
